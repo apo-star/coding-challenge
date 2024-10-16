@@ -6,12 +6,49 @@ import { GiRobotGrab } from "react-icons/gi";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { useModelProperty } from "../../store/store";
+import { useModel } from "../../store/useModel";
+import { IoEyeOffOutline } from "react-icons/io5";
+import { useMemo } from "react";
 
 export const FilterSearch = () => {
-  const { modelName, modelMeshs } = useModelProperty([
+  const { modelName, modelMeshs, setModelMeshs } = useModelProperty([
     "modelName",
     "modelMeshs",
+    "setModelMeshs",
   ]);
+  const { model } = useModel();
+  const viewEyeHandle = (name: string) => {
+    model.traverse((child: any) => {
+      if (child.isMesh && child.name === name) {
+        if (child.visible) {
+          child.visible = false;
+          updateModelMeshes();
+        } else {
+          child.visible = true;
+          updateModelMeshes();
+        }
+      }
+    });
+  };
+
+  const removeModelMesh = (name: string) => {
+    model.traverse((child: any) => {
+      if (child.isMesh && child.name === name) {
+        child.parent.remove(child);
+        updateModelMeshes();
+      }
+    });
+  };
+
+  const updateModelMeshes = () => {
+    const loadedMeshes: any = [];
+    model.traverse((child: any) => {
+      if (child.isMesh) {
+        loadedMeshes.push(child);
+      }
+    });
+    setModelMeshs(loadedMeshes);
+  };
 
   return (
     <>
@@ -127,14 +164,20 @@ export const FilterSearch = () => {
                           <div className="flex items-center gap-x-3">
                             <div className="grow">
                               <span className="text-sm text-white dark:text-neutral-200">
-                                {item}
+                                {item.name}
                               </span>
                             </div>
                             <div className="flex gap-x-2 items-center">
-                              <button>
-                                <MdOutlineRemoveRedEye color="white" />
+                              <button onClick={() => viewEyeHandle(item.name)}>
+                                {item.visible ? (
+                                  <MdOutlineRemoveRedEye color="white" />
+                                ) : (
+                                  <IoEyeOffOutline color="white" />
+                                )}
                               </button>
-                              <button>
+                              <button
+                                onClick={() => removeModelMesh(item.name)}
+                              >
                                 <MdDelete color="white" />
                               </button>
                             </div>

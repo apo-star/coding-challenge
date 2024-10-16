@@ -46,4 +46,14 @@ const useModelStatus = create<IModelStatus>((set) => ({
   setModelRotation: (value) => set({ modelRotation: value }),
 }));
 
+interface IOverlay {
+  viewTransform: boolean;
+  setViewTransform: (value: boolean) => void;
+}
+const useOverlay = create<IOverlay>((set) => ({
+  viewTransform: false,
+  setViewTransform: (value) => set({ viewTransform: value }),
+}));
+
 export const useModelProperty = createStoreWithSelectors(useModelStatus);
+export const useOverlayStatus = createStoreWithSelectors(useOverlay);

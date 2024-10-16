@@ -4,18 +4,18 @@ import {
   GizmoHelper,
   GizmoViewport,
   TransformControls,
+  Environment,
 } from "@react-three/drei";
 import { useModel } from "../store/useModel";
 import { useRef } from "react";
 import { useModelProperty } from "../store/store";
+import { useOverlayStatus } from "../store/store";
 
 export const Scene = () => {
   const { model } = useModel();
   const controlsRef = useRef();
-  const { setModelPosition, setModelRotation } = useModelProperty([
-    "setModelPosition",
-    "setModelRotation",
-  ]);
+  const { setModelPosition } = useModelProperty(["setModelPosition"]);
+  const { viewTransform } = useOverlayStatus(["viewTransform"]);
 
   return (
     <Canvas
@@ -33,29 +33,33 @@ export const Scene = () => {
     >
       <ambientLight intensity={0.5} />
       <OrbitControls makeDefault />
-
       {model ? (
-        <TransformControls
-          ref={controlsRef}
-          mode="translate"
-          enabled={true}
-          onChange={() => {
-            const positionX =
-              controlsRef.current.positionStart.x +
-              controlsRef.current.offset.x;
-            const positionY =
-              controlsRef.current.positionStart.y +
-              controlsRef.current.offset.y;
-            const positionZ =
-              controlsRef.current.positionStart.z +
-              controlsRef.current.offset.z;
-            console.log("controlsRef.current", controlsRef.current);
+        viewTransform ? (
+          <TransformControls
+            ref={controlsRef}
+            mode="translate"
+            enabled={true}
+            onChange={() => {
+              if (controlsRef.current) {
+                const positionX =
+                  controlsRef.current.positionStart.x +
+                  controlsRef.current.offset.x;
+                const positionY =
+                  controlsRef.current.positionStart.y +
+                  controlsRef.current.offset.y;
+                const positionZ =
+                  controlsRef.current.positionStart.z +
+                  controlsRef.current.offset.z;
 
-            setModelPosition([positionX, positionY, positionZ]);
-          }}
-        >
+                setModelPosition([positionX, positionY, positionZ]);
+              }
+            }}
+          >
+            <primitive object={model} />
+          </TransformControls>
+        ) : (
           <primitive object={model} />
-        </TransformControls>
+        )
       ) : (
         <mesh>
           <sphereGeometry />
