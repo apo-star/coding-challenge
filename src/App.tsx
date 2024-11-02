@@ -13,9 +13,13 @@ declare global {
 function App() {
   return (
     <div className="flex">
-      <Scene />
+      {/* <Scene />
       <Overlay />
-      <UploadContorls />
+      <UploadContorls /> */}
+      <p>How about discuss on another chatting app?</p>
+      <p>discord: apo585</p>
+      <p>skype: live:.cid.bb2a9bddc1d4732a</p>
+      <p>gmail: apolle.world@gmail.com</p>
     </div>
   );
 }
