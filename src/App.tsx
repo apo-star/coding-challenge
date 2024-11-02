@@ -12,7 +12,7 @@ declare global {
 
 function App() {
   return (
-    <div className="flex">
+    <div className="block text-[24px]">
       {/* <Scene />
       <Overlay />
       <UploadContorls /> */}
