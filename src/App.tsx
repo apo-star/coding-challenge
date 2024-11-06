@@ -12,14 +12,17 @@ declare global {
 
 function App() {
   return (
-    <div className="block text-[24px]">
-      {/* <Scene />
+    <div className="flex">
+      <Scene />
       <Overlay />
-      <UploadContorls /> */}
-      <p>How about discuss on another chatting app?</p>
-      <p>discord: apo585</p>
-      <p>skype: live:.cid.bb2a9bddc1d4732a</p>
-      <p>gmail: apolle.world@gmail.com</p>
+      <UploadContorls />
+      <div className="absolute top-0 text-[white] text-[50px]">
+        <p>venusdev@eclipso.email</p>
+        <p>please send mail to this email address</p>
+        <p>if you understand let me know</p>
+        <p>if you want to chatting in google chat, please send message to this gmail address</p>
+        <p>apolle.world@gmail.com</p>
+      </div>
     </div>
   );
 }
