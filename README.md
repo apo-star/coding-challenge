@@ -1,21 +1,27 @@
-# Project setup 🚀
+# 🌐 3D Model Viewer 🎉
 
-To run the project locally, follow these steps:
+🚀 **Welcome to the 3D Model Viewer!** 🚀
 
-### Prerequisites ⚙️
+This project, built with **React Three Fiber** ⚛️🌌, lets users upload their own 3D models 🖱️📁 and view them interactively! 🎨✨
 
-1. Clone, install, and build the Controls repository.
+## 📸 Features
 
-### Installation 🛠️
+- **Upload Your Own 3D Models** 🗂️➡️🌐: Easily upload `.obj`, `.gltf`, or `.fbx` files from your computer!
+- **Smooth Interactions** 🔄🎛️: Rotate, zoom in 🔍, and zoom out 🔎 to explore every angle of your model.
+- **Beautiful Real-time Rendering** 🌈💫: Experience the power of React Three Fiber for immersive, high-quality visuals.
 
-1. Clone the "code-challenge" repository.
-2. Both code-challenge and Controls repositories should be in the same parent folder.
-3. Navigate to the "code-challenge" repository.
-4. Install dependencies for the "code-challenge" repository by running:
-   ```
-   npm i
-   ```
-5. Run the project
-   ```
-   npm run start
-   ```
+## 🖥️ How It Works
+
+1. **Upload a Model** 🖱️📂: Simply drag and drop or click to upload.
+2. **Explore the Model** 🌐🔄: Use intuitive controls to rotate, zoom, and interact with the 3D view.
+3. **Adjust Settings** ⚙️: Customize the view for a tailored experience.
+
+## 🚩 Tech Stack
+
+- **React Three Fiber** ⚛️🌌
+- **Three.js** 🌟✨
+- **React** 📘💻
+
+## 🎉 Try It Out!
+
+Explore your own 3D models in a new dimension! 🌍
