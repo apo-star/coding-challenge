@@ -16,12 +16,23 @@ This project, built with **React Three Fiber** ⚛️🌌, lets users upload the
 2. **Explore the Model** 🌐🔄: Use intuitive controls to rotate, zoom, and interact with the 3D view.
 3. **Adjust Settings** ⚙️: Customize the view for a tailored experience.
 
-## 🚩 Tech Stack
+## 🚀 Getting Started
 
-- **React Three Fiber** ⚛️🌌
-- **Three.js** 🌟✨
-- **React** 📘💻
+Follow these steps to clone the repository and run the project locally:
 
-## 🎉 Try It Out!
+### 1. Clone the Repository
 
-Explore your own 3D models in a new dimension! 🌍
+```bash
+git clone https://github.com/apo-star/coding-challenge.git
+cd coding-challenge
+```
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+### 3. Run the Project
+
+```bash
+npm run start
+```
